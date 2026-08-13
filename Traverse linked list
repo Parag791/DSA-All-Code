@@ -1,0 +1,169 @@
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define node structure
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to create new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to traverse the linked list
+void traverse(struct Node* head) {
+    if (head == NULL) {
+        printf("List is empty\n");
+        return;
+    }
+    struct Node* temp = head;
+    printf("The list is: ");
+    while (temp != NULL) {
+        printf("%d", temp->data);
+        if (temp->next != NULL) printf(" -> ");
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+// Function to count nodes
+int countNodes(struct Node* head) {
+    int count = 0;
+    struct Node* temp = head;
+    while (temp != NULL) {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
+// Funcion to insert node at a given position
+struct Node* insertAtPosition(struct Node* head, int data, int pos) {
+    struct Node* newNode = createNode(data);
+    if (pos == 1) {  // Insert at beginning
+        newNode->next = head;
+        head = newNode;
+        return head;
+    }
+
+    struct Node* temp = head;
+    for (int i = 1; i < pos - 1 && temp != NULL; i++) {
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {
+        printf("Position out of range!\n");
+        free(newNode);
+        return head;
+    }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+    return head;
+}
+
+// Function to delete node from given position
+struct Node* deleteAtPosition(struct Node* head, int pos) {
+    if (head == NULL) {
+        printf("List is empty!\n");
+        return head;
+    }
+
+    struct Node* temp = head;
+
+    if (pos == 1) {  // Delete first node
+        head = head->next;
+        free(temp);
+        return head;
+    }
+
+    struct Node* prev = NULL;
+    for (int i = 1; i < pos && temp != NULL; i++) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (temp == NULL) {
+        printf("Position out of range!\n");
+        return head;
+    }
+
+    prev->next = temp->next;
+    free(temp);
+    return head;
+}
+
+int main() {
+    struct Node* head = NULL;
+    struct Node* temp = NULL;
+    int n, data, choice, pos;
+
+    printf("Enter number of nodes: ");
+    scanf("%d", &n);
+
+    printf("Enter the elements: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &data);
+        struct Node* newNode = createNode(data);
+        if (head == NULL) {
+            head = newNode;
+            temp = head;
+        } else {
+            temp->next = newNode;
+            temp = newNode;
+        }
+    }
+
+    do {
+        printf("\nMENU:\n");
+        printf("1. Insert a node at a position\n");
+        printf("2. Delete a node from specific position\n");
+        printf("3. Count nodes\n");
+        printf("4. Traversal\n");
+        printf("5. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter element: ");
+                scanf("%d", &data);
+                printf("Enter position: ");
+                scanf("%d", &pos);
+                head = insertAtPosition(head, data, pos);
+                printf("Node inserted\n");
+                break;
+
+            case 2:
+                printf("Enter position to delete: ");
+                scanf("%d", &pos);
+                head = deleteAtPosition(head, pos);
+                printf("Node deleted\n");
+                break;
+
+            case 3:
+                printf("The total number of nodes: %d\n", countNodes(head));
+                break;
+
+            case 4:
+                traverse(head);
+                break;
+
+            case 5:
+                printf("Exiting...\n");
+                break;
+
+            default:
+                printf("Invalid choice!\n");
+        }
+    } while (choice != 5);
+
+    return 0;
+}
