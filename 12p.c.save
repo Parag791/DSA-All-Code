@@ -1,0 +1,121 @@
+5.for ((i=1;i<=5;i++))
+do
+  for ((j=1;j<=i;j++))
+  do
+    printf "$i "
+  done
+  printf "\n"
+done
+6.for ((i=5;i>=1;i--))
+do
+  for ((j=1;j<=i;j++))
+  do
+    printf "$j "
+  done
+  printf "\n"
+done
+7.num=1
+for ((i=1;i<=5;i++))
+do
+  for ((j=1;j<=i;j++))
+  do
+    printf "$num "
+    ((num++))
+  done
+  printf "\n"
+done
+8.for ((i=1;i<=5;i++))
+do
+  for ((j=1;j<=i;j++))
+  do
+    echo -n "$(( (i+j)%2 )) "
+  done
+  echo
+done
+9.for ((i=1;i<=5;i++))
+do
+  for ((j=1;j<=i;j++))
+  do
+    echo -n "* "
+  done
+  echo
+done
+10.for ((i=5;i>=1;i--))
+do
+  for ((s=1;s<=5-i;s++))
+  do
+    echo -n " "
+  done
+
+  for ((j=1;j<=i;j++))
+  do
+    echo -n "* "
+  done
+  echo
+done
+11.for ((i=1;i<=5;i++))
+do
+  for ((j=1;j<=i;j++))
+  do
+    echo -n "* "
+  done
+  echo
+done
+
+for ((i=4;i>=1;i--))
+do
+  for ((j=1;j<=i;j++))
+  do
+    echo -n "* "
+  done
+  echo
+done
+12.n=5
+for ((i=1;i<=n;i++))
+do
+  for ((j=1;j<=n;j++))
+  do
+    if [[ $i -eq 1 || $i -eq $n || $j -eq 1 || $j -eq $n ]]
+    then
+      echo -n "* "
+    else
+      echo -n "  "
+    fi
+  done
+  echo
+done
+13.#!/bin/bash
+
+for ((i=1;i<=5;i++))
+do
+  for ((j=1;j<=5;j++))
+  do
+    if [[ $i -eq 1 || $i -eq 5 || $j -eq 1 || $j -eq 5 ]]
+    then
+      echo -n "* "
+    else
+      echo -n "  "
+    fi
+  done
+  echo
+done
+14.#!/bin/bash
+
+for ((i=1;i<=5;i++))
+do
+  for ((j=1;j<=i;j++))
+  do
+    echo -n "$j "
+  done
+  echo
+done
+15.#!/bin/bash
+
+for ((i=5;i>=1;i--))
+do
+  for ((j=1;j<=i;j++))
+  do
+    echo -n "$j "
+  done
+  echo
+done

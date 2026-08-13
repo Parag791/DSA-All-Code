@@ -1,0 +1,179 @@
+1.echo "Enter number of elements:"
+read n
+
+for ((i=0;i<n;i++))
+do
+  echo "Enter element:"
+  read arr[i]
+done
+
+echo "Array elements are:"
+for ((i=0;i<n;i++))
+do
+  echo ${arr[i]}
+done
+2.echo "Enter number of elements:"
+read n
+sum=0
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+  sum=$((sum+arr[i]))
+done
+
+echo "Sum = $sum"
+3.echo "Enter number of elements:"
+read n
+sum=0
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+  sum=$((sum+arr[i]))
+done
+
+avg=$((sum/n))
+echo "Average = $avg"
+4.echo "Enter number of elements:"
+read n
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+done
+
+max=${arr[0]}
+
+for ((i=1;i<n;i++))
+do
+  if [ ${arr[i]} -gt $max ]
+  then
+    max=${arr[i]}
+  fi
+done
+
+echo "Largest element = $max"
+5.echo "Enter number of elements:"
+read n
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+done
+
+echo "Enter element to search:"
+read key
+flag=0
+
+for ((i=0;i<n;i++))
+do
+  if [ ${arr[i]} -eq $key ]
+  then
+    flag=1
+    break
+  fi
+done
+
+if [ $flag -eq 1 ]
+then
+  echo "Element found"
+else
+  echo "Element not found"
+fi
+6.echo "Enter number of elements:"
+read n
+mul=1
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+  mul=$((mul*arr[i]))
+done
+
+echo "Multiplication = $mul"
+7.echo "Enter number of elements:"
+read n
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+done
+
+max=${arr[0]}
+second=${arr[0]}
+
+for ((i=1;i<n;i++))
+do
+  if [ ${arr[i]} -gt $max ]
+  then
+    second=$max
+    max=${arr[i]}
+  elif [ ${arr[i]} -gt $second ] && [ ${arr[i]} -ne $max ]
+  then
+    second=${arr[i]}
+  fi
+done
+
+echo "Second largest = $second"
+8.echo "Enter number of elements:"
+read n
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+done
+
+for ((i=0;i<n;i++))
+do
+  for ((j=0;j<n-i-1;j++))
+  do
+    if [ ${arr[j]} -gt ${arr[j+1]} ]
+    then
+      temp=${arr[j]}
+      arr[j]=${arr[j+1]}
+      arr[j+1]=$temp
+    fi
+  done
+done
+
+echo "Sorted array:"
+echo ${arr[@]}
+9.echo "Enter number of elements:"
+read n
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+done
+
+echo "Even numbers:"
+for ((i=0;i<n;i++))
+do
+  if [ $((arr[i]%2)) -eq 0 ]
+  then
+    echo ${arr[i]}
+  fi
+done
+
+echo "Odd numbers:"
+for ((i=0;i<n;i++))
+do
+  if [ $((arr[i]%2)) -ne 0 ]
+  then
+    echo ${arr[i]}
+  fi
+done
+10.echo "Enter number of elements:"
+read n
+
+for ((i=0;i<n;i++))
+do
+  read arr[i]
+done
+
+echo "Reversed array:"
+for ((i=n-1;i>=0;i--))
+do
+  echo ${arr[i]}
+done

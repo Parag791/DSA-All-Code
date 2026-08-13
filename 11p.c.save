@@ -1,0 +1,96 @@
+#include <stdio.h>
+
+// 1. Add two integers
+void add(int a, int b) {
+    printf("Sum = %d\n", a + b);
+}
+2.// 2. Subtract two numbers
+void subtract(int a, int b) {
+    printf("Difference = %d\n", a - b);
+}
+3./ 3. Multiply two numbers
+int multiply(int a, int b) {
+    return a * b;
+}
+4./ 4. Divide two numbers (float)
+float divide(int a, int b) {
+    if (b == 0) {
+        printf("Division by zero not allowed\n");
+        return 0;
+    }
+    return (float)a / b;
+}  
+// 5. Square of a number
+int square(int n) {
+    return n * n;
+}
+6./ 6. Cube of a number
+int cube(int n) {
+    return n * n * n;
+}
+7.// 7. Even or Odd
+void evenOdd(int n) {
+    if (n % 2 == 0)
+        printf("Even\n");
+    else
+        printf("Odd\n");
+}
+8.// 8. Factorial using loop
+int factorial(int n) {
+    int fact = 1;
+    for (int i = 1; i <= n; i++)
+        fact *= i;
+    return fact;
+}
+9.// 9. Sum of first N natural numbers
+int sumN(int n) {
+    int sum = 0;
+    for (int i = 1; i <= n; i++)
+        sum += i;
+    return sum;
+}
+10./ 10. Largest of two numbers
+int largestTwo(int a, int b) {
+    return (a > b) ? a : b;
+}
+11./ 11. Largest among three numbers
+int largestThree(int a, int b, int c) {
+    if (a >= b && a >= c)
+        return a;
+    else if (b >= c)
+        return b;
+    else
+        return c;
+}
+12.// 12. Power (base^exponent)
+int power(int base, int exp) {
+    int result = 1;
+    for (int i = 1; i <= exp; i++)
+        result *= base;
+    return result;
+}
+ 13. Average of three numbers
+float average(int a, int b, int c) {
+    return (a + b + c) / 3.0;
+}
+/ 14. Check prime number
+int isPrime(int n) {
+    if (n <= 1)
+        return 0;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0)
+            return 0;
+    }
+    return 1;
+}
+15.// 15. Fibonacci series
+void fibonacci(int n) {
+    int a = 0, b = 1, next;
+    for (int i = 1; i <= n; i++) {
+        printf("%d ", a);
+        next = a + b;
+        a = b;
+        b = next;
+    }
+}
+
